@@ -5,7 +5,7 @@ This is the first challenge of a new series of activities. The goal of this seri
 
 The minimum requirements for the challenge are as follows:
 
-1. The app must have a textfield at the top of the view and one button at the bottom labeled "Run".
+1. The app must have a label at the top of the view and one button at the bottom labeled "Run".
 2. When a users presses the start button, the app will start by displaying the number 900 and animate by counting whole numbers up to 1050. This animation should take 2 seconds to complete. There is a video file with a sample of the animation included in the git repo.
 
 Additionally, the best solutions will include these features:
