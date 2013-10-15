@@ -6,7 +6,7 @@ This is the first challenge of a new series of activities. The goal of this seri
 The minimum requirements for the challenge are as follows:
 
 1. The app must have a textfield at the top of the view and one button at the bottom labeled "Run".
-2. When a users presses the start button, the app will start by displaying the number 20 and animate by counting whole numbers up to 40. This animation should take 2 seconds to complete.
+2. When a users presses the start button, the app will start by displaying the number 900 and animate by counting whole numbers up to 1050. This animation should take 2 seconds to complete. There is a video file with a sample of the animation included in the git repo.
 
 Additionally, the best solutions will include these features:
 
@@ -19,6 +19,6 @@ I'm making a contest of the challenge. Entries will be accepted up until 10/25/2
 
 To submit an entry for evaluation, please do the following:
 
-1. Use git as version control on your project.
-2. Post your files to a public Github repository. 
-3. Send bdolmar@nerdery.com a url with a link to the project's repository.
+1. Fork the project from [https://github.com/bdolmar/BRAVO.iOS.Challenge.01Animation](https://github.com/bdolmar/BRAVO.iOS.Challenge.01Animation).
+2. Post your files to your public fork on Github. 
+3. Send a pull request back to the original repository with your project by midnight on 10/25/2013.
