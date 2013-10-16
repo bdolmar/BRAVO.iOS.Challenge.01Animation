@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wQR-ly-Wez">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--Counting View Controller-->
+        <scene sceneID="si8-fW-UaE">
+            <objects>
+                <viewController id="wQR-ly-Wez" customClass="NRDCountingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TBo-ts-1s9"/>
+                        <viewControllerLayoutGuide type="bottom" id="O2o-Oh-vSW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Ai-52-Dw7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p54-zi-rl2">
+                                <rect key="frame" x="139" y="100" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xn-3J-pL6">
+                                <rect key="frame" x="137" y="338" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O2o-Oh-vSW" firstAttribute="top" secondItem="5Xn-3J-pL6" secondAttribute="bottom" constant="200" id="KRN-Xi-3jj"/>
+                            <constraint firstItem="p54-zi-rl2" firstAttribute="top" secondItem="TBo-ts-1s9" secondAttribute="bottom" constant="80" id="KX3-8B-T54"/>
+                            <constraint firstAttribute="centerX" secondItem="p54-zi-rl2" secondAttribute="centerX" id="QJy-TS-gyD"/>
+                            <constraint firstAttribute="centerX" secondItem="5Xn-3J-pL6" secondAttribute="centerX" id="njI-WT-zMu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="countingButton" destination="5Xn-3J-pL6" id="lfK-qM-HH3"/>
+                        <outlet property="countingLabel" destination="p54-zi-rl2" id="56z-mK-VYZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xBy-zr-azJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="494" y="245"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
