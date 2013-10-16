@@ -42,11 +42,7 @@
         CGFloat startValue = self.start.doubleValue;
         CGFloat endValue = self.end.doubleValue;
         
-        if (startValue > endValue) {
-            CGFloat temp = startValue;
-            startValue = endValue;
-            endValue = temp;
-        }
+        NSInteger sign = (startValue < endValue) ? 1 : -1;
         
         double delayInSeconds = 0;
         __block BOOL shouldStop = NO;
@@ -61,9 +57,9 @@
                 if (interval > intervalPerTick) {
                     prevTime = newTime;
                     CGFloat ticks = interval / intervalPerTick;
-                    NSUInteger count = prevCount + ticks;
+                    NSUInteger count = prevCount + (sign * ticks);
                     
-                    if (count > endValue) {
+                    if ((sign == 1) ? (count > endValue) : (count < endValue)) {
                         count = endValue;
                     }
                     
@@ -72,7 +68,7 @@
                     prevCount = count;
                 }
                 
-                if (prevCount >= endValue) {
+                if ((sign == 1) ? (prevCount >= endValue) : (prevCount <= endValue)) {
                     break;
                 }
             }
