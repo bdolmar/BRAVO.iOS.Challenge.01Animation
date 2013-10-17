@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B012E7518102222004D86EE /* NRDRepeatingSignaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B012E7418102222004D86EE /* NRDRepeatingSignaler.m */; };
 		1B0694FD180EFB3300B789D2 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0694FC180EFB3300B789D2 /* Storyboard.storyboard */; };
 		1B069500180EFB9A00B789D2 /* NRDCountingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0694FF180EFB9A00B789D2 /* NRDCountingViewController.m */; };
 		1B069503180F0C8700B789D2 /* NRDCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B069502180F0C8700B789D2 /* NRDCounter.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B012E7318102222004D86EE /* NRDRepeatingSignaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDRepeatingSignaler.h; sourceTree = "<group>"; };
+		1B012E7418102222004D86EE /* NRDRepeatingSignaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDRepeatingSignaler.m; sourceTree = "<group>"; };
 		1B0694FC180EFB3300B789D2 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		1B0694FE180EFB9A00B789D2 /* NRDCountingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDCountingViewController.h; sourceTree = "<group>"; };
 		1B0694FF180EFB9A00B789D2 /* NRDCountingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDCountingViewController.m; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 			children = (
 				1B069501180F0C8700B789D2 /* NRDCounter.h */,
 				1B069502180F0C8700B789D2 /* NRDCounter.m */,
+				1B012E7318102222004D86EE /* NRDRepeatingSignaler.h */,
+				1B012E7418102222004D86EE /* NRDRepeatingSignaler.m */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 				582DA597180D9B560042E4CA /* NRDAppDelegate.m in Sources */,
 				1B069500180EFB9A00B789D2 /* NRDCountingViewController.m in Sources */,
 				1B069503180F0C8700B789D2 /* NRDCounter.m in Sources */,
+				1B012E7518102222004D86EE /* NRDRepeatingSignaler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
