@@ -7,8 +7,10 @@
 //
 
 #import "NRDCounter.h"
-
 #import <CoreGraphics/CoreGraphics.h>
+
+#import "NRDRepeatingSignaler.h"
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface NRDCounter ()
@@ -16,6 +18,8 @@
 @property (nonatomic, strong) NSNumber *start;
 @property (nonatomic, strong) NSNumber *end;
 @property (nonatomic, strong) NSNumber *duration;
+
+@property (nonatomic, strong) RACDisposable *countingDisposable;
 
 - (CGFloat)timeIntervalPerTick;
 
@@ -43,42 +47,22 @@
         CGFloat endValue = self.end.doubleValue;
         
         NSInteger sign = (startValue < endValue) ? 1 : -1;
+
+        __block NSUInteger prevCount = startValue;
         
-        double delayInSeconds = 0;
-        __block BOOL shouldStop = NO;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
-            CFAbsoluteTime prevTime = startTime;
-            NSUInteger prevCount = startValue;
-            while (!shouldStop) {
-                CFAbsoluteTime newTime = CFAbsoluteTimeGetCurrent();
-                CFAbsoluteTime interval = newTime - prevTime;
-                if (interval > intervalPerTick) {
-                    prevTime = newTime;
-                    CGFloat ticks = interval / intervalPerTick;
-                    NSUInteger count = prevCount + (sign * ticks);
-                    
-                    if ((sign == 1) ? (count > endValue) : (count < endValue)) {
-                        count = endValue;
-                    }
-                    
-                    [subscriber sendNext:@(count)];
-                    
-                    prevCount = count;
-                }
-                
-                if ((sign == 1) ? (prevCount >= endValue) : (prevCount <= endValue)) {
-                    break;
-                }
-            }
+        self.countingDisposable = [[[[NRDRepeatingSignaler repeatingSignalWithInitialFrequency:@((1 / intervalPerTick)) accelerationFactor:@1] map:^(NSDate *date) {
+            NSUInteger count = prevCount + sign;
+            prevCount = count;
             
-            [subscriber sendCompleted];
-        });
+            return @(count);
+        }] doNext:^(NSNumber *count) {
+            if ((sign == 1) ? (count.doubleValue > endValue) : (count.doubleValue < endValue)) {
+                [subscriber sendCompleted];
+                [self.countingDisposable dispose];
+            }
+        }] subscribe:subscriber];
         
-        return [RACDisposable disposableWithBlock:^{
-            shouldStop = YES;
-        }];
+        return self.countingDisposable;
     }];
 }
 
