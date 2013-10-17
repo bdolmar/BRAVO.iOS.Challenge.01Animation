@@ -28,7 +28,17 @@
  */
 - (instancetype)initWithWithInitialFrequency:(NSNumber *)frequency accelerationFactor:(NSNumber *)accelerationFactor;
 
+/**
+ Start the repeating timer.
+ @return A signal of dates, timed per the initial frequency and acceleration factor.
+ */
 - (RACSignal *)start;
+
+/**
+ Create a signal for the repeating timer.
+ @return A signal of dates, timed per the initial frequency and acceleration factor.
+ */
+- (RACSignal *)recursiveTimerSignal;
 
 @end
 
@@ -53,31 +63,21 @@
 
 - (RACSignal *)start
 {
-    return [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-        double delayInSeconds = 0;
-        __block BOOL shouldStop = NO;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
-            CFAbsoluteTime prevTime = startTime;
-            while (!shouldStop) {
-                CFAbsoluteTime newTime = CFAbsoluteTimeGetCurrent();
-                CFAbsoluteTime interval = newTime - prevTime;
-                if (interval > 1 / self.frequency.floatValue) {
-                    prevTime = newTime;
-                    
-                    [subscriber sendNext:[NSDate date]];
-                }
-                
-                // FIXME: acceleration
-//                self.frequency = @(self.frequency.doubleValue + self.initialFrequency.doubleValue * interval * (self.accelerationFactor.doubleValue - 1) / 60);
-            }
-        });
-        
-        return [RACDisposable disposableWithBlock:^{
-            shouldStop = YES;
-        }];
-    }];
+    return [self recursiveTimerSignal];
+}
+
+- (RACSignal *)recursiveTimerSignal
+{
+    CGFloat frequency = self.frequency.doubleValue;
+    NSTimeInterval interval = (1 / frequency);
+    
+    // FIXME: acceleration
+    RACSignal *timer = [[RACSignal interval:interval onScheduler:[RACScheduler scheduler]] take:1];
+    
+    // Repeat without immediate, infinite recursion using -[RACSignal then:]
+    return [timer concat:[[RACSignal empty] then:^RACSignal *{
+        return [self recursiveTimerSignal];
+    }]];
 }
 
 @end

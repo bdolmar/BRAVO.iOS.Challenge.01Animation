@@ -20,7 +20,7 @@
 /**
  The normalized acceleration per minute for the repeating timer.
  1 indicates no acceleration, 2 indicates indicates the frequency will
- double after one minute.s
+ double after one minute, and so on.
  */
 @property (nonatomic, readonly) NSNumber *accelerationFactor;
 
