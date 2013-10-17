@@ -71,11 +71,13 @@
     CGFloat frequency = self.frequency.doubleValue;
     NSTimeInterval interval = (1 / frequency);
     
-    // FIXME: acceleration
     RACSignal *timer = [[RACSignal interval:interval onScheduler:[RACScheduler scheduler]] take:1];
     
-    // Repeat without immediate, infinite recursion using -[RACSignal then:]
+    // Repeat without infinite recursion by using -[RACSignal then:]
     return [timer concat:[[RACSignal empty] then:^RACSignal *{
+        // Update the frequency for acceleration, after the interval.
+        self.frequency = @(frequency + (interval * ((self.accelerationFactor.doubleValue - 1) / 60)));
+
         return [self recursiveTimerSignal];
     }]];
 }
