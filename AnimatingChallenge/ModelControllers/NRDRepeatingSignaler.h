@@ -15,7 +15,7 @@
 /**
  The initial frequency of the repeating timer.
  */
-@property (nonatomic, readonly) NSNumber *startingFrequency;
+@property (nonatomic, readonly) NSNumber *initialFrequency;
 
 /**
  The normalized acceleration per minute for the repeating timer.
