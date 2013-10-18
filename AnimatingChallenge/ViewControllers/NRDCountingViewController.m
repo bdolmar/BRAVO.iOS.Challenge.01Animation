@@ -11,8 +11,8 @@
 #import "NRDCounter.h"
 #import "NRDRepeatingSignaler.h"
 
-#import <libextobjc/EXTScope.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveCocoa/RACEXTScope.h>
 
 static NSUInteger const kNRDCountingStartNumber = 900;
 static NSUInteger const kNRDCountingEndNumber = 1050;
