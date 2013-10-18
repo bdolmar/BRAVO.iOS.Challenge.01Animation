@@ -13,7 +13,7 @@
 @interface NRDRepeatingSignaler ()
 
 @property (nonatomic, strong) NSNumber *initialFrequency;
-@property (nonatomic, strong) NSNumber *accelerationFactor;
+@property (nonatomic) AHEasingFunction easingFunction;
 
 /**
  The subject on which signals will be sent when firing.
@@ -46,12 +46,12 @@
 
 @implementation NRDRepeatingSignaler
 
-- (instancetype)initWithWithInitialFrequency:(NSNumber *)frequency accelerationFactor:(NSNumber *)accelerationFactor
+- (instancetype)initWithWithInitialFrequency:(NSNumber *)frequency easingFunction:(AHEasingFunction)easingFunction
 {
     if ((self = [super init])) {
         self.initialFrequency = frequency;
         self.frequency = self.initialFrequency;
-        self.accelerationFactor = accelerationFactor;
+        self.easingFunction = easingFunction;
     }
     
     return self;
@@ -80,8 +80,7 @@
     }
     
     CGFloat originalFreq = self.frequency.doubleValue;
-    NSTimeInterval originalInterval = (1 / originalFreq);
-    self.frequency = @(originalFreq + (originalInterval * ((self.accelerationFactor.doubleValue - 1) / 60)));
+    self.frequency = @((*self.easingFunction)(originalFreq));
     
     [self.signalingSubject sendNext:[NSDate date]];
     

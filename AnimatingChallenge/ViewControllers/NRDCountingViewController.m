@@ -9,6 +9,7 @@
 #import "NRDCountingViewController.h"
 
 #import "NRDCounter.h"
+#import "NRDRepeatingSignaler.h"
 
 #import <libextobjc/EXTScope.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -22,6 +23,13 @@ static CGFloat const kNRDCountingDuration = 2.0;
 @property (nonatomic, strong) NSNumber *startNumber;
 @property (nonatomic, strong) NSNumber *endNumber;
 @property (nonatomic, strong) NSNumber *duration;
+
+/**
+ The timer that controls when counting occurs.
+ */
+@property (nonatomic, strong) NRDRepeatingSignaler *signaler;
+
+- (CGFloat)timeIntervalPerTickForStart:(NSNumber *)start end:(NSNumber *)end duration:(NSNumber *)duration;
 
 @end
 
@@ -50,15 +58,27 @@ static CGFloat const kNRDCountingDuration = 2.0;
                                                             end:self.endNumber
                                                        duration:self.duration];
         
-        return [counter count];
+        CGFloat timeInterval = [self timeIntervalPerTickForStart:self.startNumber end:self.endNumber duration:self.duration];
+        NRDRepeatingSignaler *signaler = [[NRDRepeatingSignaler alloc] initWithWithInitialFrequency:@((1 / timeInterval)) easingFunction:LinearInterpolation];
+        self.signaler = signaler;
+        @weakify(signaler);
+        return [[counter countWithTimingSignal:[signaler start]]
+                finally:^{
+                    @strongify(signaler);
+                    [signaler stop];
+                }];
     }];
     
     RAC(self.countingLabel, text) = [[[self.countingButton.rac_command.executionSignals switchToLatest]
-                                      map:^(NSNumber *count) {
-                                          return count.stringValue;
-                                      }]
+                                       map:^(NSNumber *count) {
+                                           return count.stringValue;
+                                       }]
                                      deliverOn:[RACScheduler mainThreadScheduler]];
 }
 
+- (CGFloat)timeIntervalPerTickForStart:(NSNumber *)start end:(NSNumber *)end duration:(NSNumber *)duration
+{
+    return duration.doubleValue / abs(start.doubleValue - end.doubleValue);
+}
 
 @end

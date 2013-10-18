@@ -9,8 +9,7 @@
 #import "NRDCounter.h"
 #import <CoreGraphics/CoreGraphics.h>
 
-#import "NRDRepeatingSignaler.h"
-
+#import <easing.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface NRDCounter ()
@@ -23,13 +22,6 @@
  Dispose to stop counting, if counting.
  */
 @property (nonatomic, strong) RACDisposable *countingDisposable;
-
-/**
- The timer that controls when counting occurs.
- */
-@property (nonatomic, strong) NRDRepeatingSignaler *signaler;
-
-- (CGFloat)timeIntervalPerTick;
 
 @end
 
@@ -46,20 +38,17 @@
     return self;
 }
 
-- (RACSignal *)count
+- (RACSignal *)countWithTimingSignal:(RACSignal *)timingSignal
 {
+    CGFloat startValue = self.start.doubleValue;
+    CGFloat endValue = self.end.doubleValue;
+    
+    NSInteger sign = (startValue < endValue) ? 1 : -1;
+    
+    __block NSUInteger prevCount = startValue;
+    
     return [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-        CGFloat intervalPerTick = [self timeIntervalPerTick];
-        
-        CGFloat startValue = self.start.doubleValue;
-        CGFloat endValue = self.end.doubleValue;
-        
-        NSInteger sign = (startValue < endValue) ? 1 : -1;
-
-        __block NSUInteger prevCount = startValue;
-        
-        self.signaler = [[NRDRepeatingSignaler alloc] initWithWithInitialFrequency:@((1 / intervalPerTick)) accelerationFactor:@1];
-        self.countingDisposable = [[[[self.signaler start] map:^(NSDate *date) {
+        self.countingDisposable = [[[timingSignal map:^(NSDate *date) {
             NSUInteger count = prevCount + sign;
             prevCount = count;
             
@@ -70,19 +59,11 @@
                 
                 [self.countingDisposable dispose];
                 self.countingDisposable = nil;
-                
-                [self.signaler stop];
-                self.signaler = nil;
             }
         }] subscribe:subscriber];
         
         return self.countingDisposable;
     }];
-}
-
-- (CGFloat)timeIntervalPerTick
-{
-    return self.duration.doubleValue / abs(self.start.doubleValue - self.end.doubleValue);
 }
 
 @end

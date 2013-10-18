@@ -25,6 +25,11 @@
  */
 - (instancetype)initWithStart:(NSNumber *)start end:(NSNumber *)end duration:(NSNumber *)duration;
 
-- (RACSignal *)count;
+/**
+ Count on every event from the timing signal.
+ @param timingSignal The signal controlling when to count.
+ @return A signal of values.
+ */
+- (RACSignal *)countWithTimingSignal:(RACSignal *)timingSignal;
 
 @end

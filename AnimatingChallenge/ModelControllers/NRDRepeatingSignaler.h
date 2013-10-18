@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import <easing.h>
+
 @class RACSignal;
 
 @interface NRDRepeatingSignaler : NSObject
@@ -18,19 +20,17 @@
 @property (nonatomic, readonly) NSNumber *initialFrequency;
 
 /**
- The normalized acceleration per minute for the repeating timer.
- 1 indicates no acceleration, 2 indicates indicates the frequency will
- double after one minute, and so on.
+ The easing function, controlling how the frequency changes over time.
  */
-@property (nonatomic, readonly) NSNumber *accelerationFactor;
+@property (nonatomic, readonly) AHEasingFunction easingFunction;
 
 /**
  Create a repeating timer.
  @param frequency The timer's frequency.
- @param accelerationFactor The acceleration factor per minute.
+ @param easingFunction The easing function, controlling how the frequency changes over time.
  @return The instance.
  */
-- (instancetype)initWithWithInitialFrequency:(NSNumber *)frequency accelerationFactor:(NSNumber *)accelerationFactor;
+- (instancetype)initWithWithInitialFrequency:(NSNumber *)frequency easingFunction:(AHEasingFunction)easingFunction;
 
 /**
  Start the repeating timer.
