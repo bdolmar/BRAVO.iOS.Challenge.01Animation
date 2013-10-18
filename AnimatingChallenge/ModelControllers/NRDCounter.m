@@ -19,7 +19,15 @@
 @property (nonatomic, strong) NSNumber *end;
 @property (nonatomic, strong) NSNumber *duration;
 
+/**
+ Dispose to stop counting, if counting.
+ */
 @property (nonatomic, strong) RACDisposable *countingDisposable;
+
+/**
+ The timer that controls when counting occurs.
+ */
+@property (nonatomic, strong) NRDRepeatingSignaler *signaler;
 
 - (CGFloat)timeIntervalPerTick;
 
@@ -50,7 +58,8 @@
 
         __block NSUInteger prevCount = startValue;
         
-        self.countingDisposable = [[[[NRDRepeatingSignaler repeatingSignalWithInitialFrequency:@((1 / intervalPerTick)) accelerationFactor:@1] map:^(NSDate *date) {
+        self.signaler = [[NRDRepeatingSignaler alloc] initWithWithInitialFrequency:@((1 / intervalPerTick)) accelerationFactor:@1];
+        self.countingDisposable = [[[[self.signaler start] map:^(NSDate *date) {
             NSUInteger count = prevCount + sign;
             prevCount = count;
             
@@ -58,7 +67,12 @@
         }] doNext:^(NSNumber *count) {
             if ((sign == 1) ? (count.doubleValue > endValue) : (count.doubleValue < endValue)) {
                 [subscriber sendCompleted];
+                
                 [self.countingDisposable dispose];
+                self.countingDisposable = nil;
+                
+                [self.signaler stop];
+                self.signaler = nil;
             }
         }] subscribe:subscriber];
         

@@ -16,39 +16,35 @@
 @property (nonatomic, strong) NSNumber *accelerationFactor;
 
 /**
+ The subject on which signals will be sent when firing.
+ */
+@property (nonatomic, strong) RACSubject *signalingSubject;
+
+/**
+ The timer itself.
+ */
+@property (nonatomic, strong) NSTimer *timer;
+
+/**
+ Internal flag to indicate that the timer should stop.
+ */
+@property (nonatomic) BOOL shouldStop;
+
+/**
  The current frequency of the repeating timer.
  */
 @property (nonatomic, strong) NSNumber *frequency;
 
 /**
- Create a repeating timer.
- @param frequency The timer's frequency.
- @param accelerationFactor The acceleration factor per minute.
- @return The instance.
- */
-- (instancetype)initWithWithInitialFrequency:(NSNumber *)frequency accelerationFactor:(NSNumber *)accelerationFactor;
-
-/**
- Start the repeating timer.
+ Callback for the repeating timer. When fired, sends the current date on signalingSubject.
+ @param timer The timer firing.
  @return A signal of dates, timed per the initial frequency and acceleration factor.
  */
-- (RACSignal *)start;
-
-/**
- Create a signal for the repeating timer.
- @return A signal of dates, timed per the initial frequency and acceleration factor.
- */
-- (RACSignal *)recursiveTimerSignal;
+- (void)timerCallback:(NSTimer *)timer;
 
 @end
 
 @implementation NRDRepeatingSignaler
-
-+ (RACSignal *)repeatingSignalWithInitialFrequency:(NSNumber *)frequency accelerationFactor:(NSNumber *)accelerationFactor
-{
-    NRDRepeatingSignaler *signaler = [[self alloc] initWithWithInitialFrequency:frequency accelerationFactor:accelerationFactor];
-    return [signaler start];
-}
 
 - (instancetype)initWithWithInitialFrequency:(NSNumber *)frequency accelerationFactor:(NSNumber *)accelerationFactor
 {
@@ -63,23 +59,43 @@
 
 - (RACSignal *)start
 {
-    return [self recursiveTimerSignal];
-}
-
-- (RACSignal *)recursiveTimerSignal
-{
+    self.signalingSubject = [RACSubject subject];
+    
     CGFloat frequency = self.frequency.doubleValue;
     NSTimeInterval interval = (1 / frequency);
     
-    RACSignal *timer = [[RACSignal interval:interval onScheduler:[RACScheduler scheduler]] take:1];
-    
-    // Repeat without infinite recursion by using -[RACSignal then:]
-    return [timer concat:[[RACSignal empty] then:^RACSignal *{
-        // Update the frequency for acceleration, after the interval.
-        self.frequency = @(frequency + (interval * ((self.accelerationFactor.doubleValue - 1) / 60)));
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                  target:self
+                                                selector:@selector(timerCallback:)
+                                                userInfo:nil
+                                                 repeats:NO];
+    return self.signalingSubject;
+}
 
-        return [self recursiveTimerSignal];
-    }]];
+- (void)timerCallback:(NSTimer *)timer
+{
+    if (self.shouldStop) {
+        self.shouldStop = NO;
+        return;
+    }
+    
+    CGFloat originalFreq = self.frequency.doubleValue;
+    NSTimeInterval originalInterval = (1 / originalFreq);
+    self.frequency = @(originalFreq + (originalInterval * ((self.accelerationFactor.doubleValue - 1) / 60)));
+    
+    [self.signalingSubject sendNext:[NSDate date]];
+    
+    CGFloat frequency = self.frequency.doubleValue;
+    NSTimeInterval interval = (1 / frequency);
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(timerCallback:) userInfo:nil repeats:NO];
+}
+
+- (void)stop
+{
+    [self.timer invalidate];
+    self.timer = nil;
+    
+    self.shouldStop = YES;
 }
 
 @end

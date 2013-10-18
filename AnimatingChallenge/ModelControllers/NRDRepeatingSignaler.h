@@ -25,11 +25,22 @@
 @property (nonatomic, readonly) NSNumber *accelerationFactor;
 
 /**
- Create a repeating timer. Stop the timer by unsubscribing to the returned signal. Note that acceleration is ignored, for now.
+ Create a repeating timer.
  @param frequency The timer's frequency.
- @param accelerationFactor The acceleration factor per minute. Ignored for now.
- @return A repeating signal.
+ @param accelerationFactor The acceleration factor per minute.
+ @return The instance.
  */
-+ (RACSignal *)repeatingSignalWithInitialFrequency:(NSNumber *)frequency accelerationFactor:(NSNumber *)accelerationFactor;
+- (instancetype)initWithWithInitialFrequency:(NSNumber *)frequency accelerationFactor:(NSNumber *)accelerationFactor;
+
+/**
+ Start the repeating timer.
+ @return A signal of dates, timed per the initial frequency and acceleration factor.
+ */
+- (RACSignal *)start;
+
+/**
+ Stops the repeating timer, if running.
+ */
+- (void)stop;
 
 @end
