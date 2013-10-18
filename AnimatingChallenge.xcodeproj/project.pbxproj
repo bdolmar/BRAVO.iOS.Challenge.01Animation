@@ -20,6 +20,10 @@
 		582DA5AA180D9B560042E4CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 582DA5A8180D9B560042E4CA /* InfoPlist.strings */; };
 		582DA5AC180D9B560042E4CA /* AnimatingChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DA5AB180D9B560042E4CA /* AnimatingChallengeTests.m */; };
 		5A0BF5B8AC6246E1A067F8B1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E75B680FDF76421BB979E79D /* Settings.bundle */; };
+		7BDE098B180F3CB3001C6FA7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BDE098A180F3CB3001C6FA7 /* MainInterface.storyboard */; };
+		7BDE098E180F3CE7001C6FA7 /* NRDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDE098D180F3CE7001C6FA7 /* NRDRootViewController.m */; };
+		7BDE09911811B2DC001C6FA7 /* NRDAnimationTargetLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDE09901811B2DC001C6FA7 /* NRDAnimationTargetLayer.m */; };
+		7BDE09931811B5CB001C6FA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BDE09921811B5CB001C6FA7 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,12 @@
 		582DA5A7180D9B560042E4CA /* AnimatingChallengeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnimatingChallengeTests-Info.plist"; sourceTree = "<group>"; };
 		582DA5A9180D9B560042E4CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		582DA5AB180D9B560042E4CA /* AnimatingChallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimatingChallengeTests.m; sourceTree = "<group>"; };
+		7BDE098A180F3CB3001C6FA7 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		7BDE098C180F3CE7001C6FA7 /* NRDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDRootViewController.h; sourceTree = "<group>"; };
+		7BDE098D180F3CE7001C6FA7 /* NRDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDRootViewController.m; sourceTree = "<group>"; };
+		7BDE098F1811B2DC001C6FA7 /* NRDAnimationTargetLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDAnimationTargetLayer.h; sourceTree = "<group>"; };
+		7BDE09901811B2DC001C6FA7 /* NRDAnimationTargetLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDAnimationTargetLayer.m; sourceTree = "<group>"; };
+		7BDE09921811B5CB001C6FA7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E75B680FDF76421BB979E79D /* Settings.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = AnimatingChallenge/Resources/Settings.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -57,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BDE09931811B5CB001C6FA7 /* QuartzCore.framework in Frameworks */,
 				582DA589180D9B560042E4CA /* CoreGraphics.framework in Frameworks */,
 				582DA58B180D9B560042E4CA /* UIKit.framework in Frameworks */,
 				582DA587180D9B560042E4CA /* Foundation.framework in Frameworks */,
@@ -108,6 +119,7 @@
 		582DA585180D9B560042E4CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BDE09921811B5CB001C6FA7 /* QuartzCore.framework */,
 				582DA586180D9B560042E4CA /* Foundation.framework */,
 				582DA588180D9B560042E4CA /* CoreGraphics.framework */,
 				582DA58A180D9B560042E4CA /* UIKit.framework */,
@@ -119,11 +131,12 @@
 		582DA58C180D9B560042E4CA /* AnimatingChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				582DA595180D9B560042E4CA /* NRDAppDelegate.h */,
+				582DA596180D9B560042E4CA /* NRDAppDelegate.m */,
+				7BDE098A180F3CB3001C6FA7 /* MainInterface.storyboard */,
 				D911E1716E1848FDB5ADA37C /* Categories */,
 				72A62CF4AA6C4CFB9FE49493 /* ModelControllers */,
 				F118A90316094CCC88F66C34 /* Models */,
-				582DA595180D9B560042E4CA /* NRDAppDelegate.h */,
-				582DA596180D9B560042E4CA /* NRDAppDelegate.m */,
 				FE7F300B0BB64C24AA8F7A5F /* Resources */,
 				582DA58D180D9B560042E4CA /* Supporting Files */,
 				80006308AFF54B13BD7B513B /* Theme */,
@@ -166,6 +179,8 @@
 		5D4A86FB1BD746ABB11B1E7A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7BDE098F1811B2DC001C6FA7 /* NRDAnimationTargetLayer.h */,
+				7BDE09901811B2DC001C6FA7 /* NRDAnimationTargetLayer.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +209,8 @@
 		A089B4C05D5147D591FC6B50 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7BDE098C180F3CE7001C6FA7 /* NRDRootViewController.h */,
+				7BDE098D180F3CE7001C6FA7 /* NRDRootViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -309,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				582DA591180D9B560042E4CA /* InfoPlist.strings in Resources */,
+				7BDE098B180F3CB3001C6FA7 /* MainInterface.storyboard in Resources */,
 				582DA599180D9B560042E4CA /* Images.xcassets in Resources */,
 				5A0BF5B8AC6246E1A067F8B1 /* Settings.bundle in Resources */,
 			);
@@ -360,7 +378,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BDE09911811B2DC001C6FA7 /* NRDAnimationTargetLayer.m in Sources */,
 				582DA593180D9B560042E4CA /* main.m in Sources */,
+				7BDE098E180F3CE7001C6FA7 /* NRDRootViewController.m in Sources */,
 				582DA597180D9B560042E4CA /* NRDAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
