@@ -138,7 +138,7 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     if (flag) {
-        self.outputLabel.text = [NSString stringWithFormat:@"%d", self.endValue];
+        self.outputLabel.text = [self.numberFormatter stringFromNumber:@(self.endValue)];
     }
 }
 
