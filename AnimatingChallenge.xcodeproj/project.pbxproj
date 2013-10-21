@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B012E7518102222004D86EE /* NRDRepeatingSignaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B012E7418102222004D86EE /* NRDRepeatingSignaler.m */; };
+		1B0694FD180EFB3300B789D2 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0694FC180EFB3300B789D2 /* Storyboard.storyboard */; };
+		1B069500180EFB9A00B789D2 /* NRDCountingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0694FF180EFB9A00B789D2 /* NRDCountingViewController.m */; };
+		1B069503180F0C8700B789D2 /* NRDCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B069502180F0C8700B789D2 /* NRDCounter.m */; };
+		1BAFD71D18156DEC002A4A0F /* NRDProgressSignaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFD71C18156DEC002A4A0F /* NRDProgressSignaler.m */; };
 		582DA587180D9B560042E4CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA586180D9B560042E4CA /* Foundation.framework */; };
 		582DA589180D9B560042E4CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA588180D9B560042E4CA /* CoreGraphics.framework */; };
 		582DA58B180D9B560042E4CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA58A180D9B560042E4CA /* UIKit.framework */; };
@@ -20,6 +25,7 @@
 		582DA5AA180D9B560042E4CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 582DA5A8180D9B560042E4CA /* InfoPlist.strings */; };
 		582DA5AC180D9B560042E4CA /* AnimatingChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DA5AB180D9B560042E4CA /* AnimatingChallengeTests.m */; };
 		5A0BF5B8AC6246E1A067F8B1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E75B680FDF76421BB979E79D /* Settings.bundle */; };
+		ECE781E023B140D684CCBB32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0ED75A7F45441B2A78D4794 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +39,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B012E7318102222004D86EE /* NRDRepeatingSignaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDRepeatingSignaler.h; sourceTree = "<group>"; };
+		1B012E7418102222004D86EE /* NRDRepeatingSignaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDRepeatingSignaler.m; sourceTree = "<group>"; };
+		1B0694FC180EFB3300B789D2 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		1B0694FE180EFB9A00B789D2 /* NRDCountingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDCountingViewController.h; sourceTree = "<group>"; };
+		1B0694FF180EFB9A00B789D2 /* NRDCountingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDCountingViewController.m; sourceTree = "<group>"; };
+		1B069501180F0C8700B789D2 /* NRDCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDCounter.h; sourceTree = "<group>"; };
+		1B069502180F0C8700B789D2 /* NRDCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDCounter.m; sourceTree = "<group>"; };
+		1BAFD71B18156DEC002A4A0F /* NRDProgressSignaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDProgressSignaler.h; sourceTree = "<group>"; };
+		1BAFD71C18156DEC002A4A0F /* NRDProgressSignaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDProgressSignaler.m; sourceTree = "<group>"; };
 		582DA583180D9B560042E4CA /* AnimatingChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatingChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		582DA586180D9B560042E4CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		582DA588180D9B560042E4CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,6 +64,8 @@
 		582DA5A7180D9B560042E4CA /* AnimatingChallengeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnimatingChallengeTests-Info.plist"; sourceTree = "<group>"; };
 		582DA5A9180D9B560042E4CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		582DA5AB180D9B560042E4CA /* AnimatingChallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimatingChallengeTests.m; sourceTree = "<group>"; };
+		9E6BD1FF11D74F0C87B43291 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		B0ED75A7F45441B2A78D4794 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75B680FDF76421BB979E79D /* Settings.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = AnimatingChallenge/Resources/Settings.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -60,6 +77,7 @@
 				582DA589180D9B560042E4CA /* CoreGraphics.framework in Frameworks */,
 				582DA58B180D9B560042E4CA /* UIKit.framework in Frameworks */,
 				582DA587180D9B560042E4CA /* Foundation.framework in Frameworks */,
+				ECE781E023B140D684CCBB32 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +108,7 @@
 				582DA5A5180D9B560042E4CA /* AnimatingChallengeTests */,
 				582DA585180D9B560042E4CA /* Frameworks */,
 				582DA584180D9B560042E4CA /* Products */,
+				9E6BD1FF11D74F0C87B43291 /* Pods.xcconfig */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -112,6 +131,7 @@
 				582DA588180D9B560042E4CA /* CoreGraphics.framework */,
 				582DA58A180D9B560042E4CA /* UIKit.framework */,
 				582DA59F180D9B560042E4CA /* XCTest.framework */,
+				B0ED75A7F45441B2A78D4794 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,6 +144,7 @@
 				F118A90316094CCC88F66C34 /* Models */,
 				582DA595180D9B560042E4CA /* NRDAppDelegate.h */,
 				582DA596180D9B560042E4CA /* NRDAppDelegate.m */,
+				1B0694FC180EFB3300B789D2 /* Storyboard.storyboard */,
 				FE7F300B0BB64C24AA8F7A5F /* Resources */,
 				582DA58D180D9B560042E4CA /* Supporting Files */,
 				80006308AFF54B13BD7B513B /* Theme */,
@@ -173,6 +194,12 @@
 		72A62CF4AA6C4CFB9FE49493 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1B069501180F0C8700B789D2 /* NRDCounter.h */,
+				1B069502180F0C8700B789D2 /* NRDCounter.m */,
+				1BAFD71B18156DEC002A4A0F /* NRDProgressSignaler.h */,
+				1BAFD71C18156DEC002A4A0F /* NRDProgressSignaler.m */,
+				1B012E7318102222004D86EE /* NRDRepeatingSignaler.h */,
+				1B012E7418102222004D86EE /* NRDRepeatingSignaler.m */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -194,6 +221,8 @@
 		A089B4C05D5147D591FC6B50 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1B0694FE180EFB9A00B789D2 /* NRDCountingViewController.h */,
+				1B0694FF180EFB9A00B789D2 /* NRDCountingViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -237,11 +266,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 582DA5AF180D9B560042E4CA /* Build configuration list for PBXNativeTarget "AnimatingChallenge" */;
 			buildPhases = (
+				5D7B91F58BC54967B9F5080D /* Check Pods Manifest.lock */,
 				582DA57F180D9B560042E4CA /* Sources */,
 				582DA580180D9B560042E4CA /* Frameworks */,
 				582DA581180D9B560042E4CA /* Resources */,
 				993DB9FEBE394D6A86D4511D /* Warn for TODO and FIXME comments */,
 				4C873AE75093472C8154B1EF /* Update build number */,
+				9C2FED0BB1874EE8B33B236A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				582DA591180D9B560042E4CA /* InfoPlist.strings in Resources */,
+				1B0694FD180EFB3300B789D2 /* Storyboard.storyboard in Resources */,
 				582DA599180D9B560042E4CA /* Images.xcassets in Resources */,
 				5A0BF5B8AC6246E1A067F8B1 /* Settings.bundle in Resources */,
 			);
@@ -339,6 +371,21 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"${TARGET_BUILD_DIR}\"\nbuildPlist=\"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n\n# Increment the build number to match the git version\nsvnRevision=`git log --oneline | wc -l`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $svnRevision\" \"$buildPlist\"\n\nbundleVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$buildPlist\")\nbundleShortVersionString=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$buildPlist\")\n\n# Update the Settings.bundle\nnewVersion=\"${bundleShortVersionString} (${bundleVersion})\"\n/usr/libexec/PlistBuddy \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\"/Settings.bundle/Root.plist -c \"set PreferenceSpecifiers:1:DefaultValue $newVersion\"\necho \"newVersion: ${newVersion}\"\n";
 		};
+		5D7B91F58BC54967B9F5080D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		993DB9FEBE394D6A86D4511D /* Warn for TODO and FIXME comments */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -353,6 +400,21 @@
 			shellPath = /bin/sh;
 			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nFILE_EXTENSIONS=\"h|m|mm|c|cpp\"\nfind -E \"${SRCROOT}\" -ipath \"${SRCROOT}/pods\" -prune -o \\( -regex \".*\\.($FILE_EXTENSIONS)$\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
 		};
+		9C2FED0BB1874EE8B33B236A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -360,8 +422,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAFD71D18156DEC002A4A0F /* NRDProgressSignaler.m in Sources */,
 				582DA593180D9B560042E4CA /* main.m in Sources */,
 				582DA597180D9B560042E4CA /* NRDAppDelegate.m in Sources */,
+				1B069500180EFB9A00B789D2 /* NRDCountingViewController.m in Sources */,
+				1B069503180F0C8700B789D2 /* NRDCounter.m in Sources */,
+				1B012E7518102222004D86EE /* NRDRepeatingSignaler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +563,9 @@
 		};
 		582DA5B0180D9B560042E4CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E6BD1FF11D74F0C87B43291 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -510,7 +578,9 @@
 		};
 		582DA5B1180D9B560042E4CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E6BD1FF11D74F0C87B43291 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
