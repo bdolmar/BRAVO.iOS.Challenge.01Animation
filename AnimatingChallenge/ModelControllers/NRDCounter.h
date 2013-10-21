@@ -14,22 +14,23 @@
 
 @property (nonatomic, readonly) NSNumber *start;
 @property (nonatomic, readonly) NSNumber *end;
-@property (nonatomic, readonly) NSNumber *duration;
+
+/// A number in [0,1] indicating the progress counting from start to end.
+@property (nonatomic, readonly) NSNumber *progress;
 
 /**
- Create a counter with the given start and end counts, and a duration in seconds.
+ Create a counter with the given start and end counts.
  @param start The starting number.
  @param end The ending number.
- @param duration The time, in seconds, to take counting from `start` to `end`.
  @return The instance.
  */
-- (instancetype)initWithStart:(NSNumber *)start end:(NSNumber *)end duration:(NSNumber *)duration;
++ (instancetype)counterWithStart:(NSNumber *)start end:(NSNumber *)end;
 
 /**
- Count on every event from the timing signal.
- @param timingSignal The signal controlling when to count.
+ Count based on the progress from the progress signal.
+ @param progressSignal The signal controlling the counting progress.
  @return A signal of values.
  */
-- (RACSignal *)countWithTimingSignal:(RACSignal *)timingSignal;
+- (RACSignal *)countingSignalWithProgressSignal:(RACSignal *)progressSignal;
 
 @end

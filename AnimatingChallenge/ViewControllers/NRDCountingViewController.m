@@ -9,8 +9,10 @@
 #import "NRDCountingViewController.h"
 
 #import "NRDCounter.h"
+#import "NRDProgressSignaler.h"
 #import "NRDRepeatingSignaler.h"
 
+#import <easing.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
@@ -23,11 +25,6 @@ static CGFloat const kNRDCountingDuration = 2.0;
 @property (nonatomic, strong) NSNumber *startNumber;
 @property (nonatomic, strong) NSNumber *endNumber;
 @property (nonatomic, strong) NSNumber *duration;
-
-/**
- The timer that controls when counting occurs.
- */
-@property (nonatomic, strong) NRDRepeatingSignaler *signaler;
 
 - (CGFloat)timeIntervalPerTickForStart:(NSNumber *)start end:(NSNumber *)end duration:(NSNumber *)duration;
 
@@ -54,19 +51,14 @@ static CGFloat const kNRDCountingDuration = 2.0;
     @weakify(self);
     self.countingButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id input) {
         @strongify(self);
-        NRDCounter *counter = [[NRDCounter alloc] initWithStart:self.startNumber
-                                                            end:self.endNumber
-                                                       duration:self.duration];
-        
+
         CGFloat timeInterval = [self timeIntervalPerTickForStart:self.startNumber end:self.endNumber duration:self.duration];
-        NRDRepeatingSignaler *signaler = [[NRDRepeatingSignaler alloc] initWithWithInitialFrequency:@((1 / timeInterval)) easingFunction:LinearInterpolation];
-        self.signaler = signaler;
-        @weakify(signaler);
-        return [[counter countWithTimingSignal:[signaler start]]
-                finally:^{
-                    @strongify(signaler);
-                    [signaler stop];
-                }];
+
+        NRDCounter *counter = [NRDCounter counterWithStart:self.startNumber end:self.endNumber];
+        NRDRepeatingSignaler *timingSignaler = [NRDRepeatingSignaler repeatingSignalerWithWithInitialFrequency:@((1 / timeInterval))];
+        NRDProgressSignaler *progressSignaler = [NRDProgressSignaler progressSignalerWithDuration:self.duration.doubleValue easingFunction:LinearInterpolation];
+        
+        return [counter countingSignalWithProgressSignal:[progressSignaler progressSignalWithTimingSignal:[timingSignaler timingSignal]]];
     }];
     
     RAC(self.countingLabel, text) = [[[self.countingButton.rac_command.executionSignals switchToLatest]

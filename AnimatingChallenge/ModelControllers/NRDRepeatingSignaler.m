@@ -12,89 +12,32 @@
 
 @interface NRDRepeatingSignaler ()
 
-@property (nonatomic, strong) NSNumber *initialFrequency;
-@property (nonatomic) AHEasingFunction easingFunction;
-
 /**
- The subject on which signals will be sent when firing.
+ A signal on which the date will be sent at the timer's frequency.
  */
-@property (nonatomic, strong) RACSubject *signalingSubject;
+@property (nonatomic, strong) RACSignal *timingSignal;
 
 /**
- The timer itself.
- */
-@property (nonatomic, strong) NSTimer *timer;
-
-/**
- Internal flag to indicate that the timer should stop.
- */
-@property (nonatomic) BOOL shouldStop;
-
-/**
- The current frequency of the repeating timer.
+ The frequency of the repeating timer.
  */
 @property (nonatomic, strong) NSNumber *frequency;
-
-/**
- Callback for the repeating timer. When fired, sends the current date on signalingSubject.
- @param timer The timer firing.
- @return A signal of dates, timed per the initial frequency and acceleration factor.
- */
-- (void)timerCallback:(NSTimer *)timer;
 
 @end
 
 @implementation NRDRepeatingSignaler
 
-- (instancetype)initWithWithInitialFrequency:(NSNumber *)frequency easingFunction:(AHEasingFunction)easingFunction
++ (instancetype)repeatingSignalerWithWithInitialFrequency:(NSNumber *)frequency
 {
-    if ((self = [super init])) {
-        self.initialFrequency = frequency;
-        self.frequency = self.initialFrequency;
-        self.easingFunction = easingFunction;
-    }
+    NRDRepeatingSignaler *signaler = [[NRDRepeatingSignaler alloc] init];
+    signaler.frequency = frequency;
     
-    return self;
+    return signaler;
 }
 
-- (RACSignal *)start
+- (RACSignal *)timingSignal
 {
-    self.signalingSubject = [RACSubject subject];
-    
-    CGFloat frequency = self.frequency.doubleValue;
-    NSTimeInterval interval = (1 / frequency);
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:interval
-                                                  target:self
-                                                selector:@selector(timerCallback:)
-                                                userInfo:nil
-                                                 repeats:NO];
-    return self.signalingSubject;
-}
-
-- (void)timerCallback:(NSTimer *)timer
-{
-    if (self.shouldStop) {
-        self.shouldStop = NO;
-        return;
-    }
-    
-    CGFloat originalFreq = self.frequency.doubleValue;
-    self.frequency = @((*self.easingFunction)(originalFreq));
-    
-    [self.signalingSubject sendNext:[NSDate date]];
-    
-    CGFloat frequency = self.frequency.doubleValue;
-    NSTimeInterval interval = (1 / frequency);
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(timerCallback:) userInfo:nil repeats:NO];
-}
-
-- (void)stop
-{
-    [self.timer invalidate];
-    self.timer = nil;
-    
-    self.shouldStop = YES;
+    NSTimeInterval interval = 1 / self.frequency.doubleValue;
+    return [RACSignal interval:interval onScheduler:[RACScheduler scheduler]];
 }
 
 @end

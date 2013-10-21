@@ -11,6 +11,7 @@
 		1B0694FD180EFB3300B789D2 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0694FC180EFB3300B789D2 /* Storyboard.storyboard */; };
 		1B069500180EFB9A00B789D2 /* NRDCountingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0694FF180EFB9A00B789D2 /* NRDCountingViewController.m */; };
 		1B069503180F0C8700B789D2 /* NRDCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B069502180F0C8700B789D2 /* NRDCounter.m */; };
+		1BAFD71D18156DEC002A4A0F /* NRDProgressSignaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFD71C18156DEC002A4A0F /* NRDProgressSignaler.m */; };
 		582DA587180D9B560042E4CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA586180D9B560042E4CA /* Foundation.framework */; };
 		582DA589180D9B560042E4CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA588180D9B560042E4CA /* CoreGraphics.framework */; };
 		582DA58B180D9B560042E4CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA58A180D9B560042E4CA /* UIKit.framework */; };
@@ -45,6 +46,8 @@
 		1B0694FF180EFB9A00B789D2 /* NRDCountingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDCountingViewController.m; sourceTree = "<group>"; };
 		1B069501180F0C8700B789D2 /* NRDCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDCounter.h; sourceTree = "<group>"; };
 		1B069502180F0C8700B789D2 /* NRDCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDCounter.m; sourceTree = "<group>"; };
+		1BAFD71B18156DEC002A4A0F /* NRDProgressSignaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDProgressSignaler.h; sourceTree = "<group>"; };
+		1BAFD71C18156DEC002A4A0F /* NRDProgressSignaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDProgressSignaler.m; sourceTree = "<group>"; };
 		582DA583180D9B560042E4CA /* AnimatingChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatingChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		582DA586180D9B560042E4CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		582DA588180D9B560042E4CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -193,6 +196,8 @@
 			children = (
 				1B069501180F0C8700B789D2 /* NRDCounter.h */,
 				1B069502180F0C8700B789D2 /* NRDCounter.m */,
+				1BAFD71B18156DEC002A4A0F /* NRDProgressSignaler.h */,
+				1BAFD71C18156DEC002A4A0F /* NRDProgressSignaler.m */,
 				1B012E7318102222004D86EE /* NRDRepeatingSignaler.h */,
 				1B012E7418102222004D86EE /* NRDRepeatingSignaler.m */,
 			);
@@ -417,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAFD71D18156DEC002A4A0F /* NRDProgressSignaler.m in Sources */,
 				582DA593180D9B560042E4CA /* main.m in Sources */,
 				582DA597180D9B560042E4CA /* NRDAppDelegate.m in Sources */,
 				1B069500180EFB9A00B789D2 /* NRDCountingViewController.m in Sources */,

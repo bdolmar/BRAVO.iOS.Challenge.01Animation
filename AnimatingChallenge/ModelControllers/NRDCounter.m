@@ -7,7 +7,6 @@
 //
 
 #import "NRDCounter.h"
-#import <CoreGraphics/CoreGraphics.h>
 
 #import <easing.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -16,7 +15,7 @@
 
 @property (nonatomic, strong) NSNumber *start;
 @property (nonatomic, strong) NSNumber *end;
-@property (nonatomic, strong) NSNumber *duration;
+@property (nonatomic, strong) NSNumber *progress;
 
 /**
  Dispose to stop counting, if counting.
@@ -27,30 +26,33 @@
 
 @implementation NRDCounter
 
-- (instancetype)initWithStart:(NSNumber *)start end:(NSNumber *)end duration:(NSNumber *)duration
++ (instancetype)counterWithStart:(NSNumber *)start end:(NSNumber *)end
+{
+    NRDCounter *counter = [[NRDCounter alloc] initWithStart:start end:end];
+    return counter;
+}
+
+- (instancetype)initWithStart:(NSNumber *)start end:(NSNumber *)end
 {
     if ((self = [super init])) {
         self.start = start;
         self.end = end;
-        self.duration = duration;
+        self.progress = @0;
     }
     
     return self;
 }
 
-- (RACSignal *)countWithTimingSignal:(RACSignal *)timingSignal
+- (RACSignal *)countingSignalWithProgressSignal:(RACSignal *)progressSignal
 {
     CGFloat startValue = self.start.doubleValue;
     CGFloat endValue = self.end.doubleValue;
     
     NSInteger sign = (startValue < endValue) ? 1 : -1;
     
-    __block NSUInteger prevCount = startValue;
-    
     return [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-        self.countingDisposable = [[[timingSignal map:^(NSDate *date) {
-            NSUInteger count = prevCount + sign;
-            prevCount = count;
+        self.countingDisposable = [[[progressSignal map:^(NSNumber *progress) {
+            NSUInteger count = progress.doubleValue * (endValue - startValue) + startValue;
             
             return @(count);
         }] doNext:^(NSNumber *count) {
