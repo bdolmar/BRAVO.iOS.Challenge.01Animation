@@ -8,6 +8,8 @@
 
 #import "NRDAppDelegate.h"
 
+#import "NRDMainAnimateViewController.h"
+
 @implementation NRDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -15,6 +17,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    NRDMainAnimateViewController *mainAnimateViewController = [[NRDMainAnimateViewController alloc] initWithNibName:@"NRDMainAnimateViewController" bundle:nil];
+    self.window.rootViewController = mainAnimateViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

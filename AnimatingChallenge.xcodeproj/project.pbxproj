@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21DB3776180DD0D3001B8714 /* NRDMainAnimateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DB3774180DD0D3001B8714 /* NRDMainAnimateViewController.m */; };
+		21DB3777180DD0D3001B8714 /* NRDMainAnimateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DB3775180DD0D3001B8714 /* NRDMainAnimateViewController.xib */; };
+		21DB377F180DE66B001B8714 /* Bezier.c in Sources */ = {isa = PBXBuildFile; fileRef = 21DB3779180DE66B001B8714 /* Bezier.c */; };
+		21DB3780180DE66B001B8714 /* CPAccelerationTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DB377C180DE66B001B8714 /* CPAccelerationTimer.m */; };
+		21DB3781180DE66B001B8714 /* CPBezierTimings.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DB377E180DE66B001B8714 /* CPBezierTimings.m */; };
 		582DA587180D9B560042E4CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA586180D9B560042E4CA /* Foundation.framework */; };
 		582DA589180D9B560042E4CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA588180D9B560042E4CA /* CoreGraphics.framework */; };
 		582DA58B180D9B560042E4CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA58A180D9B560042E4CA /* UIKit.framework */; };
@@ -33,6 +38,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21DB3773180DD0D3001B8714 /* NRDMainAnimateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDMainAnimateViewController.h; sourceTree = "<group>"; };
+		21DB3774180DD0D3001B8714 /* NRDMainAnimateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDMainAnimateViewController.m; sourceTree = "<group>"; };
+		21DB3775180DD0D3001B8714 /* NRDMainAnimateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NRDMainAnimateViewController.xib; sourceTree = "<group>"; };
+		21DB3779180DE66B001B8714 /* Bezier.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Bezier.c; sourceTree = "<group>"; };
+		21DB377A180DE66B001B8714 /* Bezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bezier.h; sourceTree = "<group>"; };
+		21DB377B180DE66B001B8714 /* CPAccelerationTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAccelerationTimer.h; sourceTree = "<group>"; };
+		21DB377C180DE66B001B8714 /* CPAccelerationTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAccelerationTimer.m; sourceTree = "<group>"; };
+		21DB377D180DE66B001B8714 /* CPBezierTimings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPBezierTimings.h; sourceTree = "<group>"; };
+		21DB377E180DE66B001B8714 /* CPBezierTimings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPBezierTimings.m; sourceTree = "<group>"; };
 		582DA583180D9B560042E4CA /* AnimatingChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatingChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		582DA586180D9B560042E4CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		582DA588180D9B560042E4CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -81,6 +95,19 @@
 			children = (
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		21DB3778180DE66B001B8714 /* CPAccelerationTimer */ = {
+			isa = PBXGroup;
+			children = (
+				21DB3779180DE66B001B8714 /* Bezier.c */,
+				21DB377A180DE66B001B8714 /* Bezier.h */,
+				21DB377B180DE66B001B8714 /* CPAccelerationTimer.h */,
+				21DB377C180DE66B001B8714 /* CPAccelerationTimer.m */,
+				21DB377D180DE66B001B8714 /* CPBezierTimings.h */,
+				21DB377E180DE66B001B8714 /* CPBezierTimings.m */,
+			);
+			path = CPAccelerationTimer;
 			sourceTree = "<group>";
 		};
 		582DA57A180D9B560042E4CA = {
@@ -194,6 +221,9 @@
 		A089B4C05D5147D591FC6B50 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				21DB3773180DD0D3001B8714 /* NRDMainAnimateViewController.h */,
+				21DB3774180DD0D3001B8714 /* NRDMainAnimateViewController.m */,
+				21DB3775180DD0D3001B8714 /* NRDMainAnimateViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -208,6 +238,7 @@
 		E1019B3C2D0C4640A7BBCD0F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				21DB3778180DE66B001B8714 /* CPAccelerationTimer */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -308,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21DB3777180DD0D3001B8714 /* NRDMainAnimateViewController.xib in Resources */,
 				582DA591180D9B560042E4CA /* InfoPlist.strings in Resources */,
 				582DA599180D9B560042E4CA /* Images.xcassets in Resources */,
 				5A0BF5B8AC6246E1A067F8B1 /* Settings.bundle in Resources */,
@@ -361,7 +393,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				582DA593180D9B560042E4CA /* main.m in Sources */,
+				21DB3776180DD0D3001B8714 /* NRDMainAnimateViewController.m in Sources */,
+				21DB3780180DE66B001B8714 /* CPAccelerationTimer.m in Sources */,
+				21DB377F180DE66B001B8714 /* Bezier.c in Sources */,
 				582DA597180D9B560042E4CA /* NRDAppDelegate.m in Sources */,
+				21DB3781180DE66B001B8714 /* CPBezierTimings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
