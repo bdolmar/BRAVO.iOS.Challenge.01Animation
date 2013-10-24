@@ -16,6 +16,7 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
 
 @interface NRDCountingViewController () <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
+// UI elements
 @property (weak, nonatomic) IBOutlet UILabel *counterLabel;
 @property (weak, nonatomic) IBOutlet UIButton *runButton;
 @property (weak, nonatomic) IBOutlet UITextField *beginTextField;
@@ -25,11 +26,13 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
 @property (weak, nonatomic) IBOutlet UITextField *curveTypeTextField;
 @property (weak, nonatomic) IBOutlet UIProgressView *counterProgress;
 
+// UI Management
 @property (weak, nonatomic) UIControl *activeControl;
 @property (assign, nonatomic) NSTimeInterval keyboardAnimationDuration;
 @property (assign, nonatomic) UIViewAnimationCurve keyboardAnimationCurve;
 @property (assign, nonatomic) CGRect keyboardEndFrame;
 
+// Functionality
 @property (assign, nonatomic) NSRange countRange;
 @property (assign, nonatomic) NSInteger countDirection;
 @property (strong, nonatomic) NSTimer *timer;
@@ -66,9 +69,9 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
     
     
     // Configure the UI
-    self.counterLabel.text = [NSString stringWithFormat:@"%d", kDefaultStart];
-    self.beginTextField.text = [NSString stringWithFormat:@"%d", kDefaultStart];
-    self.endTextField.text = [NSString stringWithFormat:@"%d", kDefaultFinish];
+    self.counterLabel.text = [NSString stringWithFormat:@"%ul", kDefaultStart];
+    self.beginTextField.text = [NSString stringWithFormat:@"%ul", kDefaultStart];
+    self.endTextField.text = [NSString stringWithFormat:@"%ul", kDefaultFinish];
     self.durationTextField.text = [NSString stringWithFormat:@"%.2f", kDefaultTimeInterval];
     self.durationSlider.value = kDefaultTimeInterval;
     self.curveTypeTextField.text = [NRDStepper nameForCurve:TimerCurveTypeConstant];
