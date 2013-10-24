@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>FCBC41DD-F1FB-4D58-A772-5129167BEDC6</string>
+	<string>7E76E500-9115-448F-B481-842799051C59</string>
 	<key>IDESourceControlProjectName</key>
 	<string>AnimatingChallenge</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>186CF1A7-FE87-426C-8681-84AEF57925EB</key>
-		<string>ssh://github.com/bdolmar/BRAVO.iOS.Challenge.01Animation.git</string>
+		<key>DABF79C3-E6A7-4CA5-A30E-3519D013F62F</key>
+		<string>https://github.com/dandroid6000/BRAVO.iOS.Challenge.01Animation.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AnimatingChallenge/AnimatingChallenge.xcodeproj/project.xcworkspace</string>
+	<string>AnimatingChallenge.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>186CF1A7-FE87-426C-8681-84AEF57925EB</key>
-		<string>../../..</string>
+		<key>DABF79C3-E6A7-4CA5-A30E-3519D013F62F</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/bdolmar/BRAVO.iOS.Challenge.01Animation.git</string>
+	<string>https://github.com/dandroid6000/BRAVO.iOS.Challenge.01Animation.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>186CF1A7-FE87-426C-8681-84AEF57925EB</string>
+	<string>DABF79C3-E6A7-4CA5-A30E-3519D013F62F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>186CF1A7-FE87-426C-8681-84AEF57925EB</string>
+			<string>DABF79C3-E6A7-4CA5-A30E-3519D013F62F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>BRAVO.iOS.Challenge</string>
 		</dict>
