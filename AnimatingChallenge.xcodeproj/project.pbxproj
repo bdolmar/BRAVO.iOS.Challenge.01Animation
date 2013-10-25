@@ -20,6 +20,10 @@
 		582DA5AA180D9B560042E4CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 582DA5A8180D9B560042E4CA /* InfoPlist.strings */; };
 		582DA5AC180D9B560042E4CA /* AnimatingChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DA5AB180D9B560042E4CA /* AnimatingChallengeTests.m */; };
 		5A0BF5B8AC6246E1A067F8B1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E75B680FDF76421BB979E79D /* Settings.bundle */; };
+		846F06E418107CE8002C1BD3 /* NRDCountingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F06E218107CE8002C1BD3 /* NRDCountingViewController.m */; };
+		846F06E518107CE8002C1BD3 /* NRDCountingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F06E318107CE8002C1BD3 /* NRDCountingViewController.xib */; };
+		846F06E71811BDF8002C1BD3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F06E61811BDF8002C1BD3 /* QuartzCore.framework */; };
+		846F06EA1811BE6A002C1BD3 /* NRDStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F06E91811BE6A002C1BD3 /* NRDStepper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,12 @@
 		582DA5A7180D9B560042E4CA /* AnimatingChallengeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnimatingChallengeTests-Info.plist"; sourceTree = "<group>"; };
 		582DA5A9180D9B560042E4CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		582DA5AB180D9B560042E4CA /* AnimatingChallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimatingChallengeTests.m; sourceTree = "<group>"; };
+		846F06E118107CE8002C1BD3 /* NRDCountingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDCountingViewController.h; sourceTree = "<group>"; };
+		846F06E218107CE8002C1BD3 /* NRDCountingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDCountingViewController.m; sourceTree = "<group>"; };
+		846F06E318107CE8002C1BD3 /* NRDCountingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NRDCountingViewController.xib; sourceTree = "<group>"; };
+		846F06E61811BDF8002C1BD3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		846F06E81811BE6A002C1BD3 /* NRDStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRDStepper.h; path = AnimatingChallenge/Controllers/NRDStepper.h; sourceTree = SOURCE_ROOT; };
+		846F06E91811BE6A002C1BD3 /* NRDStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRDStepper.m; path = AnimatingChallenge/Controllers/NRDStepper.m; sourceTree = SOURCE_ROOT; };
 		E75B680FDF76421BB979E79D /* Settings.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = AnimatingChallenge/Resources/Settings.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -57,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846F06E71811BDF8002C1BD3 /* QuartzCore.framework in Frameworks */,
 				582DA589180D9B560042E4CA /* CoreGraphics.framework in Frameworks */,
 				582DA58B180D9B560042E4CA /* UIKit.framework in Frameworks */,
 				582DA587180D9B560042E4CA /* Foundation.framework in Frameworks */,
@@ -108,6 +119,7 @@
 		582DA585180D9B560042E4CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				846F06E61811BDF8002C1BD3 /* QuartzCore.framework */,
 				582DA586180D9B560042E4CA /* Foundation.framework */,
 				582DA588180D9B560042E4CA /* CoreGraphics.framework */,
 				582DA58A180D9B560042E4CA /* UIKit.framework */,
@@ -120,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				D911E1716E1848FDB5ADA37C /* Categories */,
-				72A62CF4AA6C4CFB9FE49493 /* ModelControllers */,
+				72A62CF4AA6C4CFB9FE49493 /* Controllers */,
 				F118A90316094CCC88F66C34 /* Models */,
 				582DA595180D9B560042E4CA /* NRDAppDelegate.h */,
 				582DA596180D9B560042E4CA /* NRDAppDelegate.m */,
@@ -170,10 +182,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		72A62CF4AA6C4CFB9FE49493 /* ModelControllers */ = {
+		72A62CF4AA6C4CFB9FE49493 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				846F06E81811BE6A002C1BD3 /* NRDStepper.h */,
+				846F06E91811BE6A002C1BD3 /* NRDStepper.m */,
 			);
+			name = Controllers;
 			path = ModelControllers;
 			sourceTree = "<group>";
 		};
@@ -194,6 +209,9 @@
 		A089B4C05D5147D591FC6B50 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				846F06E118107CE8002C1BD3 /* NRDCountingViewController.h */,
+				846F06E218107CE8002C1BD3 /* NRDCountingViewController.m */,
+				846F06E318107CE8002C1BD3 /* NRDCountingViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -280,6 +298,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "The Nerdery";
 				TargetAttributes = {
+					582DA582180D9B560042E4CA = {
+						DevelopmentTeam = 7Q2ZL6T85L;
+					};
 					582DA59D180D9B560042E4CA = {
 						TestTargetID = 582DA582180D9B560042E4CA;
 					};
@@ -308,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846F06E518107CE8002C1BD3 /* NRDCountingViewController.xib in Resources */,
 				582DA591180D9B560042E4CA /* InfoPlist.strings in Resources */,
 				582DA599180D9B560042E4CA /* Images.xcassets in Resources */,
 				5A0BF5B8AC6246E1A067F8B1 /* Settings.bundle in Resources */,
@@ -362,6 +384,8 @@
 			files = (
 				582DA593180D9B560042E4CA /* main.m in Sources */,
 				582DA597180D9B560042E4CA /* NRDAppDelegate.m in Sources */,
+				846F06EA1811BE6A002C1BD3 /* NRDStepper.m in Sources */,
+				846F06E418107CE8002C1BD3 /* NRDCountingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +444,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -469,6 +494,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -498,12 +524,16 @@
 		582DA5B0180D9B560042E4CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dan Kane (NUAQVHYYAV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnimatingChallenge/AnimatingChallenge-Prefix.pch";
 				INFOPLIST_FILE = "AnimatingChallenge/AnimatingChallenge-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "608E6E38-C3DA-4E82-B568-7D3577D4692D";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -511,12 +541,16 @@
 		582DA5B1180D9B560042E4CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dan Kane (NUAQVHYYAV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnimatingChallenge/AnimatingChallenge-Prefix.pch";
 				INFOPLIST_FILE = "AnimatingChallenge/AnimatingChallenge-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "608E6E38-C3DA-4E82-B568-7D3577D4692D";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
