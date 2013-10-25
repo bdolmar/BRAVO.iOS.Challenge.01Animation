@@ -18,14 +18,26 @@
 
 - (NSTimeInterval)timeIntervalForStep:(NSUInteger)step
 {
-    NSAssert(0 <= step && step <= self.totalSteps, @"Fatal Error: Step is outside total range.");
+    NSAssert(0 < step && step <= self.totalSteps, @"Fatal Error: Step is outside total range.");
     
     // Normalize step and do Bézier calculation
     CGFloat t = (CGFloat)step / self.totalSteps;
     self.progress = t;
-    CGFloat equivalentSteps = [self.class normalizedBezierPointForT:t timingFunction:self.timingFunction].x;
+    CGFloat equivalentSteps = [self.class bezierPointForT:t timingFunction:self.timingFunction normalizeSum:YES].x;
     CGFloat result = equivalentSteps * self.totalDuration / self.totalSteps;
-    NSLog(@"step: %d\twait: %f", step, result);
+    NSLog(@"step: %lu\twait: %f", (unsigned long)step, result);
+    return result;
+}
+
+- (NSUInteger)stepAtTime:(NSTimeInterval)time
+{
+    NSAssert(0 < time && time <= self.totalDuration, @"Fatal Error: Step is outside total range.");
+    
+    // Normalize time and do Bézier calculation
+    CGFloat t = time / self.totalDuration;
+    self.progress = t;
+    CGFloat stepPercentage = [self.class bezierPointForT:t timingFunction:self.timingFunction normalizeSum:NO].y;
+    NSUInteger result = stepPercentage * self.totalSteps;
     return result;
 }
 
@@ -51,29 +63,25 @@
             self.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
             break;
             
-        case TimerCurveTypeLinear:
-            self.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-            break;
-            
         case TimerCurveTypeDefault:
             self.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
             break;
             
-        case TimerCurveTypeConstant:
+        case TimerCurveTypeLinear:
         default:
-            self.timingFunction = nil;
+            self.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
             break;
     }
 }
 
 #pragma mark - Class methods
 
-+ (CGPoint)normalizedBezierPointForT:(CGFloat)t timingFunction:(CAMediaTimingFunction *)timingFunction
++ (CGPoint)bezierPointForT:(CGFloat)t timingFunction:(CAMediaTimingFunction *)timingFunction normalizeSum:(BOOL)normalized
 {
     NSAssert(0 <= t && t <= 1.0, @"Fatal Error: t must be on the interval [0,1].");
     
-    // Default to TimerCurveTypeConstant: B(t) = 1
     if (timingFunction == nil) {
+        // Return 'constant' curve
         return CGPointMake(1.0, 1.0);
     }
     
@@ -90,14 +98,17 @@
     CGFloat x = pow(1-t,3) * p0[0] + 3*pow(1-t,2) * t * p1[0] + 3*(1-t) * pow(t,2) * p2[0] + pow(t,3) * p3[0];
     CGFloat y = pow(1-t,3) * p0[1] + 3*pow(1-t,2) * t * p1[1] + 3*(1-t) * pow(t,2) * p2[1] + pow(t,3) * p3[1];
     
-    
-    // Integral from 0 to 1 of Bézier = (P0 + P1 + P2 + P3)/4
-    // Use this to scale the output and normalize the number of steps
-    
-    CGFloat xScalar = (p0[0] + p1[0] + p2[0] + p3[0])/4;
-    CGFloat yScalar = (p0[1] + p1[1] + p2[1] + p3[1])/4;
-    
-    return CGPointMake(x/xScalar, y/yScalar);
+    if (normalized) {
+        // Integral from 0 to 1 of Bézier = (P0 + P1 + P2 + P3)/4
+        // Use this to scale the output so the integral is 1
+        
+        CGFloat xScalar = (p0[0] + p1[0] + p2[0] + p3[0])/4;
+        CGFloat yScalar = (p0[1] + p1[1] + p2[1] + p3[1])/4;
+        return CGPointMake(x/xScalar, y/yScalar);
+    }
+    else {
+        return CGPointMake(x, y);
+    }
 }
 
 + (NSString *)nameForCurve:(TimerCurveType)timerCurveType
@@ -119,17 +130,13 @@
             return @"Ease Out";
             break;
             
-        case TimerCurveTypeLinear:
-            return @"Linear";
-            break;
-            
         case TimerCurveTypeDefault:
             return @"Default";
             break;
             
-        case TimerCurveTypeConstant:
+        case TimerCurveTypeLinear:
         default:
-            return @"None";
+            return @"Linear";
             break;
     }
 }

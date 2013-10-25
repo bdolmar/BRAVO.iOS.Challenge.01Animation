@@ -143,14 +143,14 @@
                     </connections>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJp-vt-UaD" userLabel="Label - Duration:">
-                    <rect key="frame" x="20" y="435" width="52" height="21"/>
+                    <rect key="frame" x="20" y="434" width="52" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="None" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2jE-35-ele">
-                    <rect key="frame" x="80" y="430" width="220" height="30"/>
+                    <rect key="frame" x="80" y="429" width="220" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -167,7 +167,6 @@
                 <constraint firstAttribute="centerX" secondItem="VaD-7O-1Nt" secondAttribute="centerX" id="8GD-q5-6yi"/>
                 <constraint firstItem="DJp-vt-UaD" firstAttribute="centerY" secondItem="2jE-35-ele" secondAttribute="centerY" id="Did-UP-YIu"/>
                 <constraint firstItem="2jE-35-ele" firstAttribute="leading" secondItem="DJp-vt-UaD" secondAttribute="trailing" constant="8" id="FPR-lg-T9A"/>
-                <constraint firstAttribute="bottom" secondItem="2jE-35-ele" secondAttribute="bottom" constant="20" id="Fyu-KU-KY2"/>
                 <constraint firstItem="aIz-Nn-dNZ" firstAttribute="top" secondItem="yjE-je-L9n" secondAttribute="bottom" constant="10" id="H0y-Vm-xEu"/>
                 <constraint firstAttribute="trailing" secondItem="buU-Pj-RmA" secondAttribute="trailing" constant="20" id="I4a-xX-LoG"/>
                 <constraint firstItem="yjE-je-L9n" firstAttribute="centerX" secondItem="aIz-Nn-dNZ" secondAttribute="centerX" id="JGS-9h-xJ0"/>
@@ -182,6 +181,7 @@
                 <constraint firstItem="VaD-7O-1Nt" firstAttribute="top" secondItem="GSi-Ls-HM8" secondAttribute="bottom" constant="15" id="YaA-pd-pkG"/>
                 <constraint firstItem="buU-Pj-RmA" firstAttribute="leading" secondItem="aIz-Nn-dNZ" secondAttribute="trailing" constant="8" id="b7R-g0-TYO"/>
                 <constraint firstItem="ePq-4T-d6h" firstAttribute="top" secondItem="lhV-2g-p3A" secondAttribute="bottom" constant="8" id="bu8-ga-NTr"/>
+                <constraint firstItem="2jE-35-ele" firstAttribute="top" secondItem="aIz-Nn-dNZ" secondAttribute="bottom" constant="35" id="dXD-Hj-7Ws"/>
                 <constraint firstItem="Kd9-wR-6Uo" firstAttribute="top" secondItem="TGz-6X-JWL" secondAttribute="bottom" constant="8" id="eZ5-HX-8ey"/>
                 <constraint firstAttribute="centerX" secondItem="jaF-O4-Ejn" secondAttribute="centerX" id="eh9-Zh-ufS"/>
                 <constraint firstItem="4hm-ht-eYw" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="fdG-WE-DRp"/>
@@ -197,7 +197,6 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="DIJ-3w-M4A" appends="YES" id="cP3-KW-aXk"/>
-                <outletCollection property="gestureRecognizers" destination="DIJ-3w-M4A" appends="YES" id="qi3-aX-4fG"/>
             </connections>
         </view>
         <tapGestureRecognizer id="DIJ-3w-M4A">

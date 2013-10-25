@@ -35,8 +35,9 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
 // Functionality
 @property (assign, nonatomic) NSRange countRange;
 @property (assign, nonatomic) NSInteger countDirection;
-@property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NRDStepper *stepper;
+@property (strong, nonatomic) CADisplayLink *displayLink;
+@property (assign, nonatomic) NSTimeInterval elapsedTime;
 
 @end
 
@@ -61,22 +62,21 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
     self.stepper.totalDuration = kDefaultTimeInterval;
     
     // Specify a built-in curve type
-    self.stepper.timerCurveType = TimerCurveTypeConstant;
-    //self.stepper.timerCurveType = TimerCurveTypeEaseOutExp;
+    self.stepper.timerCurveType = TimerCurveTypeLinear;
     
     // Or manually specify a timing function
     //self.stepper.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.075 :0.82 :0.165 :1.0];
     
     
     // Configure the UI
-    self.counterLabel.text = [NSString stringWithFormat:@"%ul", kDefaultStart];
-    self.beginTextField.text = [NSString stringWithFormat:@"%ul", kDefaultStart];
-    self.endTextField.text = [NSString stringWithFormat:@"%ul", kDefaultFinish];
+    self.counterLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)kDefaultStart];
+    self.beginTextField.text = [NSString stringWithFormat:@"%lu", (unsigned long)kDefaultStart];
+    self.endTextField.text = [NSString stringWithFormat:@"%lu", (unsigned long)kDefaultFinish];
     self.durationTextField.text = [NSString stringWithFormat:@"%.2f", kDefaultTimeInterval];
     self.durationSlider.value = kDefaultTimeInterval;
-    self.curveTypeTextField.text = [NRDStepper nameForCurve:TimerCurveTypeConstant];
+    self.curveTypeTextField.text = [NRDStepper nameForCurve:self.stepper.timerCurveType];
     
-    UIPickerView *curveTypePickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 270)];
+    UIPickerView *curveTypePickerView = [UIPickerView new];
     curveTypePickerView.delegate = self;
     curveTypePickerView.dataSource = self;
     self.curveTypeTextField.inputView = curveTypePickerView;
@@ -98,10 +98,10 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if ([self.timer isValid]) {
-        [self.timer invalidate];
-        self.timer = nil;
-    }
+    
+    [self.displayLink invalidate];
+    self.displayLink = nil;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -117,20 +117,17 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
 {
     // Reset
     [self endEditing:nil];
-    if ([self.timer isValid]) {
-        [self.timer invalidate];
-    }
+    [self.displayLink invalidate];
+    self.elapsedTime = 0;
     
     self.counterLabel.text = [NSString stringWithFormat:@"%d", self.countRange.location];
     
     if (self.countRange.length > 0) {
-        // Start counting
+        // Start updating
         self.counterProgress.progress = 0;
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:[self.stepper timeIntervalForStep:1]
-                                                      target:self
-                                                    selector:@selector(timerFired:)
-                                                    userInfo:@{ @"step" : @1 }
-                                                     repeats:NO];
+        
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateDisplay:)];
+        [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     }
     else {
         self.counterProgress.progress = 1;
@@ -151,23 +148,52 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
     self.stepper.totalDuration = self.durationSlider.value;
 }
 
-#pragma mark - Timer methods
+#pragma mark - UI Methods
 
-- (void)timerFired:(NSTimer *)timer {
-    NSUInteger step = [timer.userInfo[@"step"] unsignedIntegerValue];
-    
-    // Update the UI
-    self.counterLabel.text = [NSString stringWithFormat:@"%d", self.countRange.location + step * self.countDirection];
-    self.counterProgress.progress = self.stepper.progress;
-    
-    // Schedule next timer if necessary
-    if (++step <= self.countRange.length) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:[self.stepper timeIntervalForStep:step]
-                                                      target:self
-                                                    selector:@selector(timerFired:)
-                                                    userInfo:@{ @"step" : @(step) }
-                                                     repeats:NO];
+- (void)updateDisplay:(CADisplayLink *)displayLink
+{
+    // Determine current progress
+    self.elapsedTime += displayLink.duration * displayLink.frameInterval;
+    NSUInteger steps;
+    if (self.elapsedTime >= self.stepper.totalDuration) {
+        steps = self.countRange.length;
+        self.counterProgress.progress = 1;
+        
+        // Stop updating
+        [self.displayLink invalidate];
+        self.displayLink = nil;
     }
+    else {
+        steps = [self.stepper stepAtTime:self.elapsedTime];
+        self.counterProgress.progress = self.stepper.progress;
+    }
+    
+    self.counterLabel.text = [NSString stringWithFormat:@"%d", self.countRange.location + steps * self.countDirection];
+}
+
+- (void)moveView
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:self.keyboardAnimationDuration];
+    [UIView setAnimationCurve:self.keyboardAnimationCurve];
+    
+    if (self.activeControl && !CGRectIsEmpty(self.keyboardEndFrame)) {
+        // Move the view to the recorded keyboard position
+        CGFloat keyboardTop = CGRectGetMinY(self.keyboardEndFrame);
+        CGFloat controlBottom = CGRectGetMaxY(self.activeControl.frame);
+        CGFloat boundsTopAdjustment = controlBottom - keyboardTop + 10;
+        CGRect bounds = self.view.frame;
+        if (bounds.origin.y + boundsTopAdjustment > 0) {
+            bounds.origin.y += boundsTopAdjustment;
+        }
+        self.view.bounds = bounds;
+    }
+    else {
+        // Reset the view
+        self.view.bounds = self.view.frame;
+    }
+    
+    [UIView commitAnimations];
 }
 
 #pragma mark - Setters
@@ -190,17 +216,6 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
 {
     self.activeControl = textField;
     [self moveView];
-    return;
-    if (textField == self.durationTextField) {
-        // Want to see slider too
-        self.activeControl = self.durationSlider;
-    }
-    else if (textField == self.beginTextField || textField == self.endTextField) {
-        self.activeControl = textField;
-    }
-    else if (textField == self.curveTypeTextField) {
-        self.activeControl = self.curveTypeTextField;
-    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -293,36 +308,6 @@ static const NSTimeInterval kDefaultTimeInterval = 2.0f;
     // Reset view
     self.keyboardEndFrame = CGRectNull;
     [self moveView];
-}
-
-#pragma mark - Helper methods
-
-- (void)moveView
-{
-    if (self.keyboardAnimationDuration) {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:self.keyboardAnimationDuration];
-        [UIView setAnimationCurve:self.keyboardAnimationCurve];
-        
-        // Move the view to the recorded keyboard position
-        if (self.activeControl && !CGRectIsNull(self.keyboardEndFrame)) {
-            CGFloat keyboardTop = CGRectGetMinY(self.keyboardEndFrame);
-            CGFloat controlBottom = CGRectGetMaxY(self.activeControl.frame);
-            CGFloat boundsTopAdjustment = controlBottom - keyboardTop + 10;
-            CGRect bounds = self.view.frame;
-            if (bounds.origin.y + boundsTopAdjustment > 0) {
-                bounds.origin.y += boundsTopAdjustment;
-                
-                self.view.bounds = bounds;
-            }
-        }
-        else {
-            // Reset the view
-            self.view.bounds = self.view.frame;
-        }
-        
-        [UIView commitAnimations];
-    }
 }
 
 @end

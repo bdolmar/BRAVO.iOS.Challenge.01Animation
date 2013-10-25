@@ -9,13 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, TimerCurveType) {
-    // Default: B(t) = 1
-    TimerCurveTypeConstant = 0,
-    
     // Built-in timing functions
-    TimerCurveTypeDefault,
     TimerCurveTypeLinear,
     TimerCurveTypeEaseOut,
+    TimerCurveTypeDefault,
     
     // Custom timing functions
     TimerCurveTypeEaseOutCubic,
@@ -37,8 +34,11 @@ typedef NS_ENUM(NSUInteger, TimerCurveType) {
 @property (readonly, nonatomic) CGFloat progress;
 
 - (NSTimeInterval)timeIntervalForStep:(NSUInteger)step;
+- (NSUInteger)stepAtTime:(NSTimeInterval)time;
 
-+ (CGPoint)normalizedBezierPointForT:(CGFloat)t timingFunction:(CAMediaTimingFunction *)timingFunction;
++ (CGPoint)bezierPointForT:(CGFloat)t
+            timingFunction:(CAMediaTimingFunction *)timingFunction
+                normalizeSum:(BOOL)normalized;
 + (NSString *)nameForCurve:(TimerCurveType)timerCurveType;
 
 @end
