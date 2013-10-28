@@ -19,6 +19,11 @@
 		582DA5A2180D9B560042E4CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582DA58A180D9B560042E4CA /* UIKit.framework */; };
 		582DA5AA180D9B560042E4CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 582DA5A8180D9B560042E4CA /* InfoPlist.strings */; };
 		582DA5AC180D9B560042E4CA /* AnimatingChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DA5AB180D9B560042E4CA /* AnimatingChallengeTests.m */; };
+		58DCD720181EBB7200DEC20F /* NRDValueAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DCD71F181EBB7200DEC20F /* NRDValueAnimator.m */; };
+		58DCD723181EBB8000DEC20F /* UIFont+Nerdery.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DCD722181EBB8000DEC20F /* UIFont+Nerdery.m */; };
+		58DCD726181EBBA500DEC20F /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 58DCD724181EBBA500DEC20F /* easing.c */; };
+		58DCD729181EBBAF00DEC20F /* NRDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DCD728181EBBAF00DEC20F /* NRDViewController.m */; };
+		58DCD72B181EBC8B00DEC20F /* NRDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58DCD72A181EBC8B00DEC20F /* NRDViewController.xib */; };
 		5A0BF5B8AC6246E1A067F8B1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E75B680FDF76421BB979E79D /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +54,15 @@
 		582DA5A7180D9B560042E4CA /* AnimatingChallengeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnimatingChallengeTests-Info.plist"; sourceTree = "<group>"; };
 		582DA5A9180D9B560042E4CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		582DA5AB180D9B560042E4CA /* AnimatingChallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimatingChallengeTests.m; sourceTree = "<group>"; };
+		58DCD71E181EBB7200DEC20F /* NRDValueAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDValueAnimator.h; sourceTree = "<group>"; };
+		58DCD71F181EBB7200DEC20F /* NRDValueAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDValueAnimator.m; sourceTree = "<group>"; };
+		58DCD721181EBB8000DEC20F /* UIFont+Nerdery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Nerdery.h"; sourceTree = "<group>"; };
+		58DCD722181EBB8000DEC20F /* UIFont+Nerdery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Nerdery.m"; sourceTree = "<group>"; };
+		58DCD724181EBBA500DEC20F /* easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = easing.c; sourceTree = "<group>"; };
+		58DCD725181EBBA500DEC20F /* easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easing.h; sourceTree = "<group>"; };
+		58DCD727181EBBAF00DEC20F /* NRDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDViewController.h; sourceTree = "<group>"; };
+		58DCD728181EBBAF00DEC20F /* NRDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDViewController.m; sourceTree = "<group>"; };
+		58DCD72A181EBC8B00DEC20F /* NRDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NRDViewController.xib; sourceTree = "<group>"; };
 		E75B680FDF76421BB979E79D /* Settings.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = AnimatingChallenge/Resources/Settings.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -119,6 +133,7 @@
 		582DA58C180D9B560042E4CA /* AnimatingChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				58DCD71D181EBB7200DEC20F /* Controllers */,
 				D911E1716E1848FDB5ADA37C /* Categories */,
 				72A62CF4AA6C4CFB9FE49493 /* ModelControllers */,
 				F118A90316094CCC88F66C34 /* Models */,
@@ -163,6 +178,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		58DCD71D181EBB7200DEC20F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				58DCD71E181EBB7200DEC20F /* NRDValueAnimator.h */,
+				58DCD71F181EBB7200DEC20F /* NRDValueAnimator.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		5D4A86FB1BD746ABB11B1E7A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +218,9 @@
 		A089B4C05D5147D591FC6B50 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				58DCD727181EBBAF00DEC20F /* NRDViewController.h */,
+				58DCD728181EBBAF00DEC20F /* NRDViewController.m */,
+				58DCD72A181EBC8B00DEC20F /* NRDViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -201,6 +228,8 @@
 		D911E1716E1848FDB5ADA37C /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				58DCD721181EBB8000DEC20F /* UIFont+Nerdery.h */,
+				58DCD722181EBB8000DEC20F /* UIFont+Nerdery.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -208,6 +237,8 @@
 		E1019B3C2D0C4640A7BBCD0F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				58DCD724181EBBA500DEC20F /* easing.c */,
+				58DCD725181EBBA500DEC20F /* easing.h */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -309,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				582DA591180D9B560042E4CA /* InfoPlist.strings in Resources */,
+				58DCD72B181EBC8B00DEC20F /* NRDViewController.xib in Resources */,
 				582DA599180D9B560042E4CA /* Images.xcassets in Resources */,
 				5A0BF5B8AC6246E1A067F8B1 /* Settings.bundle in Resources */,
 			);
@@ -360,8 +392,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58DCD723181EBB8000DEC20F /* UIFont+Nerdery.m in Sources */,
 				582DA593180D9B560042E4CA /* main.m in Sources */,
 				582DA597180D9B560042E4CA /* NRDAppDelegate.m in Sources */,
+				58DCD729181EBBAF00DEC20F /* NRDViewController.m in Sources */,
+				58DCD720181EBB7200DEC20F /* NRDValueAnimator.m in Sources */,
+				58DCD726181EBBA500DEC20F /* easing.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
