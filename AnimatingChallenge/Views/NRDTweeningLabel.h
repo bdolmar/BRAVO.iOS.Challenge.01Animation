@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NRDTweeningLayer.h"
 
 @interface NRDTweeningLabel : UILabel
 
 @property (assign, nonatomic) NSInteger labelValue;
 
-- (void)setLabelValue:(NSInteger)labelValue animated:(BOOL)animated duration:(NSTimeInterval)animationDuration;
+- (void)setLabelValue:(NSInteger)labelValue animated:(BOOL)animated duration:(CFTimeInterval)animationDuration animationStyle:(TweeningAnimationStyle)animationStyle;
 
 @end

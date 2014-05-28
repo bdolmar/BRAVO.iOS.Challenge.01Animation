@@ -17,6 +17,11 @@
 
 @end
 
+static const NSInteger kLabelFromValue = 950;
+static const NSInteger kLabelToValue = 1200;
+static const CFTimeInterval kAnimationDuration = 2.;
+static const TweeningAnimationStyle kTweeningAnimationStyle = TweeningAnimationStyleEaseOut;
+
 @implementation NRDMainViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,7 +37,7 @@
 {
     [super viewDidLoad];
     
-    self.numberLabel.labelValue = 950;
+    self.numberLabel.labelValue = kLabelFromValue;
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,7 +48,12 @@
 
 - (IBAction)onRunTapped:(id)sender
 {
-    self.numberLabel.labelValue = 1200;
+    self.numberLabel.labelValue = kLabelFromValue;
+    
+    [self.numberLabel setLabelValue:kLabelToValue
+                           animated:YES
+                           duration:kAnimationDuration
+                     animationStyle:kTweeningAnimationStyle];
 }
 
 @end

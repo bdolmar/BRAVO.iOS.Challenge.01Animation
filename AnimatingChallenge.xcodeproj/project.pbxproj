@@ -23,6 +23,7 @@
 		D20577BA1936931D005842D0 /* NRDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D20577B81936931D005842D0 /* NRDMainViewController.m */; };
 		D20577BB1936931D005842D0 /* NRDMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D20577B91936931D005842D0 /* NRDMainViewController.xib */; };
 		D20577BE19369348005842D0 /* NRDTweeningLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D20577BD19369348005842D0 /* NRDTweeningLabel.m */; };
+		D20577C119369BED005842D0 /* NRDTweeningLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D20577C019369BED005842D0 /* NRDTweeningLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		D20577B91936931D005842D0 /* NRDMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NRDMainViewController.xib; sourceTree = "<group>"; };
 		D20577BC19369348005842D0 /* NRDTweeningLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDTweeningLabel.h; sourceTree = "<group>"; };
 		D20577BD19369348005842D0 /* NRDTweeningLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDTweeningLabel.m; sourceTree = "<group>"; };
+		D20577BF19369BED005842D0 /* NRDTweeningLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDTweeningLayer.h; sourceTree = "<group>"; };
+		D20577C019369BED005842D0 /* NRDTweeningLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDTweeningLayer.m; sourceTree = "<group>"; };
 		E75B680FDF76421BB979E79D /* Settings.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = AnimatingChallenge/Resources/Settings.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -176,6 +179,8 @@
 			children = (
 				D20577BC19369348005842D0 /* NRDTweeningLabel.h */,
 				D20577BD19369348005842D0 /* NRDTweeningLabel.m */,
+				D20577BF19369BED005842D0 /* NRDTweeningLayer.h */,
+				D20577C019369BED005842D0 /* NRDTweeningLayer.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				D20577BA1936931D005842D0 /* NRDMainViewController.m in Sources */,
 				582DA593180D9B560042E4CA /* main.m in Sources */,
 				D20577BE19369348005842D0 /* NRDTweeningLabel.m in Sources */,
+				D20577C119369BED005842D0 /* NRDTweeningLayer.m in Sources */,
 				582DA597180D9B560042E4CA /* NRDAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
