@@ -31,7 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.numberLabel.labelValue = 950;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +43,7 @@
 
 - (IBAction)onRunTapped:(id)sender
 {
-    self.numberLabel.text = @"Hello";
+    self.numberLabel.labelValue = 1200;
 }
 
 @end

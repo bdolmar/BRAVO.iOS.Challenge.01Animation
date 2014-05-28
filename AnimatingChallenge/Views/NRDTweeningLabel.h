@@ -10,4 +10,8 @@
 
 @interface NRDTweeningLabel : UILabel
 
+@property (assign, nonatomic) NSInteger labelValue;
+
+- (void)setLabelValue:(NSInteger)labelValue animated:(BOOL)animated duration:(NSTimeInterval)animationDuration;
+
 @end

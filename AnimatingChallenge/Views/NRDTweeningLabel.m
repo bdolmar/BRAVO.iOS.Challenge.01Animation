@@ -19,13 +19,41 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)setLabelValue:(NSInteger)labelValue
 {
-    // Drawing code
+    [self cancelAnimation];
+    
+    [self setLabelValueWithoutCancellingAnimation:labelValue];
 }
-*/
+
+- (void)setLabelValue:(NSInteger)labelValue animated:(BOOL)animated duration:(NSTimeInterval)animationDuration
+{
+    if (animated) {
+        [self addAnimationToLabelValue:(NSInteger)labelValue duration:(NSTimeInterval)animationDuration];
+    } else {
+        [self setLabelValue:labelValue];
+    }
+}
+
+#pragma mark - Private methods
+
+- (void)setLabelValueWithoutCancellingAnimation:(NSInteger)labelValue
+{
+    _labelValue = labelValue;
+    
+    self.text = [NSString stringWithFormat:@"%d", labelValue];
+}
+
+- (void)addAnimationToLabelValue:(NSInteger)labelValue duration:(NSTimeInterval)animationDuration
+{
+    [self cancelAnimation];
+    
+}
+
+- (void)cancelAnimation
+{
+    // TODO
+}
+
 
 @end
