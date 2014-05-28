@@ -1,5 +1,5 @@
 //
-//  NRDTweeningLayer.h
+//  NRDIntegerTweenerLayer.h
 //  AnimatingChallenge
 //
 //  Created by Russ Shanahan on 5/28/14.
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, TweeningAnimationStyle) {
     TweeningAnimationStyleLinear,
 };
 
-@class NRDTweeningLayer;
+@class NRDIntegerTweenerLayer;
 
 @protocol NRDTweeningLayerDelegate <NSObject>
 
@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, TweeningAnimationStyle) {
 
 @end
 
-@interface NRDTweeningLayer : CALayer
+@interface NRDIntegerTweenerLayer : CALayer
 
 @property (weak, nonatomic) id<NRDTweeningLayerDelegate> tweeningDelegate;
 

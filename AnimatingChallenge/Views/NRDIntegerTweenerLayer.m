@@ -1,27 +1,27 @@
 //
-//  NRDTweeningLayer.m
+//  NRDIntegerTweenerLayer.m
 //  AnimatingChallenge
 //
 //  Created by Russ Shanahan on 5/28/14.
 //  Copyright (c) 2014 The Nerdery. All rights reserved.
 //
 
-#import "NRDTweeningLayer.h"
+#import "NRDIntegerTweenerLayer.h"
 
-@interface NRDTweeningLayer ()
+@interface NRDIntegerTweenerLayer ()
 
 @property (assign, nonatomic) NSInteger intValue;
 
 @end
 
-@implementation NRDTweeningLayer
+@implementation NRDIntegerTweenerLayer
 
 @dynamic intValue;
 
 - (id)initWithLayer:(id)layer
 {
     if (self = [super initWithLayer:layer]) {
-        NRDTweeningLayer *other = (NRDTweeningLayer *)layer;
+        NRDIntegerTweenerLayer *other = (NRDIntegerTweenerLayer *)layer;
         self.intValue = other.intValue;
         self.tweeningDelegate = other.tweeningDelegate;
     }

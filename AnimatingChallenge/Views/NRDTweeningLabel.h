@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NRDTweeningLayer.h"
+#import "NRDIntegerTweenerLayer.h"
 
 @interface NRDTweeningLabel : UILabel
 

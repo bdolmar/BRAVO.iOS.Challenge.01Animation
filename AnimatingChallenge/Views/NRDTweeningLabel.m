@@ -11,7 +11,7 @@
 
 @interface NRDTweeningLabel () <NRDTweeningLayerDelegate>
 
-@property (strong, nonatomic) NRDTweeningLayer *tweeningLayer;
+@property (strong, nonatomic) NRDIntegerTweenerLayer *tweeningLayer;
 @property (strong, nonatomic) NSNumberFormatter *numberFormatter;
 
 @end
@@ -38,7 +38,7 @@
 
 - (void)initCommon
 {
-    self.tweeningLayer = [NRDTweeningLayer new];
+    self.tweeningLayer = [NRDIntegerTweenerLayer new];
     self.tweeningLayer.tweeningDelegate = self;
     self.tweeningLayer.frame = CGRectMake(0., 0., 1., 1.);
     self.backgroundColor = self.backgroundColor;
